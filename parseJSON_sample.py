@@ -114,7 +114,7 @@ def parseCheckinData():
 
             outfile.write("{} - Business_ID:\t{}\n".format(
                 str(count_line),  # the line count
-                data['business_id']
+                cleanStr4SQL(data['business_id'])
             ))
 
             dates = data['date'].split(',')
@@ -122,10 +122,10 @@ def parseCheckinData():
             date_per_line = 1
             for date in dates:
                 if date_per_line is 1:
-                    outfile.write("\t\t{}".format(str(date)))       # print out the first date for the line
+                    outfile.write("\t\t{}".format(cleanStr4SQL(date)))       # print out the first date for the line
                     date_per_line = 0
                 else:
-                    outfile.write("\t\t{}\n".format(str(date)))     # print out the second date for the line
+                    outfile.write("\t\t{}\n".format(cleanStr4SQL(date)))     # print out the second date for the line
                     date_per_line = 1
             outfile.write("\n")
             line = f.readline()
@@ -138,26 +138,33 @@ def parseCheckinData():
 
 
 def parseTipData():
-    def parseCheckinData():
-        with open('yelp_CptS451_2022/yelp_tip.JSON', 'r') as f:
-            outfile = open('.//yelp_tip.txt', 'w')
+
+    with open('yelp_CptS451_2022/yelp_tip.JSON', 'r') as f:
+        outfile = open('.//yelp_tip.txt', 'w')
+        line = f.readline()
+        count_line = 0
+
+        while line:
+            data = json.loads(line)
+
+            outfile.write("{} - Business_ID:\t{}\n".format(
+                str(count_line),  # the line count
+                cleanStr4SQL(data['business_id'])
+            ))
+
+            outfile.write("\tDate:\t{}\n".format(cleanStr4SQL(data['date'])))
+            outfile.write("\tLikes:\t{}\n".format(str(data['likes'])))
+            outfile.write("\tText:\t{}\n".format(str(data['text'])))
+            outfile.write("\tUser_ID:\t{}\n".format(cleanStr4SQL(data['user_id'])))
+
+            outfile.write("\n")
             line = f.readline()
-            count_line = 0
+            count_line += 1
 
-            while line:
-                ##TODO Write in code here!!!!
-
-                outfile.write("\n")
-                line = f.readline()
-                count_line += 1
-
-        print(count_line)
-        outfile.close()
-        f.close()
-        pass
-
+    print(count_line)
+    outfile.close()
+    f.close()
     pass
-
 
 if __name__ == "__main__":
     parseBusinessData()
