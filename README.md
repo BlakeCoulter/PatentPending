@@ -1,8 +1,8 @@
 # PatentPending
-WSU CPT_S451 Team git
+WSU CPT_S 451 Team git
 
-Team Members:
-    Hensley, Cole Jacob
-    Spilman, Brain Abram
-    Trull, Conner Alexander
-    Coulter, Blake
+Team Members:<br>
+    Hensley, Cole Jacob<br>
+    Spilman, Brain Abram<br>
+    Trull, Conner Alexander<br>
+    Coulter, Blake<br>
