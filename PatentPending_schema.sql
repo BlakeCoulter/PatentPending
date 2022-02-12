@@ -56,7 +56,7 @@ CREATE TABLE GoodForMeal( --optional   nested attribute of attributes
 	brunch varchar,
 	breakfast varchar,
 	PRIMARY KEY (bid),
-	FOREIGN KEY (bid) REFERENCES business(bid) 
+	FOREIGN KEY (bid) REFERENCES attributes(bid) 
 );
 
 CREATE TABLE Ambience( -- optional   nested attribute of attributes
@@ -71,7 +71,7 @@ CREATE TABLE Ambience( -- optional   nested attribute of attributes
 	upscale varchar,
 	casual varchar,
 	PRIMARY KEY (bid),
-	FOREIGN KEY (bid) REFERENCES business(bid) 
+	FOREIGN KEY (bid) REFERENCES attributes(bid) 
 );
 
 CREATE TABLE parking( --optional  nested attribute of attributes
@@ -82,7 +82,7 @@ CREATE TABLE parking( --optional  nested attribute of attributes
 	lot varchar,
 	valet varchar,
 	PRIMARY KEY (bid),
-	FOREIGN KEY (bid) REFERENCES business(bid)
+	FOREIGN KEY (bid) REFERENCES attributes(bid)
 );
 
 CREATE TABLE check_in( --entity
@@ -95,7 +95,7 @@ CREATE TABLE check_in_table( --multivalue of check_in
 	bid char(22) NOT NULL,
 	check_in_date varchar,
 	PRIMARY KEY (bid),
-	FOREIGN KEY (bid) REFERENCES business(bid)
+	FOREIGN KEY (bid) REFERENCES check_in(bid)
 );
 
 CREATE TABLE tip( --relation
